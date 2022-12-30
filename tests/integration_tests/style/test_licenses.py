@@ -23,6 +23,8 @@ TUNTAP_LICENSE = (
 )
 ALIBABA_COPYRIGHT = "Copyright (C) 2019 Alibaba Cloud Computing. All rights reserved."
 ALIBABA_LICENSE = "SPDX-License-Identifier: Apache-2.0 OR BSD-3-Clause"
+ORACLE_COPYRIGHT = "Copyright © 2020, Oracle and/or its affiliates."
+ORACLE_LICENSE = "SPDX-License-Identifier: Apache-2.0"
 INTEL_COPYRIGHT = "Copyright © 2019 Intel Corporation"
 INTEL_LICENSE = "SPDX-License-Identifier: Apache-2.0"
 RIVOS_COPYRIGHT = "Copyright © 2023 Rivos, Inc."
@@ -88,6 +90,10 @@ def _validate_license(filename):
             file, RIVOS_LICENSE
         )
 
+
+        has_oracle_copyright = ORACLE_COPYRIGHT in copyright_info and _look_for_license(
+            file, ORACLE_LICENSE
+        )
         return (
             has_amazon_copyright
             or has_chromium_copyright
@@ -95,6 +101,7 @@ def _validate_license(filename):
             or has_alibaba_copyright
             or has_intel_copyright
             or has_rivos_copyright
+            or has_oracle_copyright
         )
     return True
 
